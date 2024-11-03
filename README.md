@@ -1,3 +1,18 @@
+# Template to use
+
+This is a template for the upcomming test for our Techin React studies. 
+
+You can easiy setup by:
+1. Downloading and extracting the zip file.
+2. Open extracted folder with your vscode and open terminal
+3. Type npm insall
+4. Type npm run dev.
+
+That's it!
+
+Template has most styles removed. This template features React Routes and React testing env. as well as Jest with one example test already written. 
+
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
