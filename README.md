@@ -12,6 +12,13 @@ That's it!
 
 Template has most styles removed. This template features React Routes and React testing env. as well as Jest with one example test already written. 
 
+# Packages
+
+Most notable packages already included are:
+1. axios
+2. jest
+3. ract router dom
+
 
 # React + Vite
 
