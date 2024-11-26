@@ -37,12 +37,24 @@ body {
 
 main {
   display: flex;
-  align-content: center;
-  justify-content: center;
+  flex-flow: nowrap column;
+  align-items: center;
 }
 
 nav {
   display: flex;
   justify-content: center;
   color: white;
+}
+
+form {
+  display: flex;
+  flex-flow: wrap column;
+  gap: 0.5rem;
+}
+
+button {
+  color: #000;
+  cursor: pointer;
+  font-size: larger;
 }

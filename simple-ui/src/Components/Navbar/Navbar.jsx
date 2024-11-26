@@ -7,7 +7,7 @@ export const Navbar = () => {
         <Link to={'/'}>Home</Link>
       </li>
       <li>
-        <Link to={'/temp'}>Temp. Page</Link>
+        <Link to={'/login'}>Login Page</Link>
       </li>
     </nav>
   );
