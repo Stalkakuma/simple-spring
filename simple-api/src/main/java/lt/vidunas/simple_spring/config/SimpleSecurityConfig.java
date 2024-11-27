@@ -35,7 +35,7 @@ public class SimpleSecurityConfig {
     public SecurityFilterChain simpleSecurityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
-                        .requestMatchers("/goodbye").hasAnyAuthority(ADMIN, USER)
+                        .requestMatchers("/goodbye", "*/*/users/**").hasAnyAuthority(ADMIN, USER)
                         .requestMatchers("/greetings", "/error", "/auth/**").permitAll())
                 .addFilterBefore(tokenAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .exceptionHandling(exceptionHandling -> exceptionHandling.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))

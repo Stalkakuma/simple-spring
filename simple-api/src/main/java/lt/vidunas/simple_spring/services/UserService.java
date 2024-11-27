@@ -3,6 +3,7 @@ package lt.vidunas.simple_spring.services;
 
 import lombok.RequiredArgsConstructor;
 import lt.vidunas.simple_spring.entities.User;
+import lt.vidunas.simple_spring.exceptions.UserNotFoundException;
 import lt.vidunas.simple_spring.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -32,7 +33,7 @@ public class UserService {
     }
 
     public User validateAndGetUser(String username) {
-        return getUserByUsername(username).orElseThrow(/*TODO implement exceptions*/);
+        return getUserByUsername(username).orElseThrow(() -> new UserNotFoundException("User with username " + username + " not found"));
     }
 
     public User saveUser(User user) {

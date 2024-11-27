@@ -7,7 +7,7 @@ export const HomePage = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:8080/greetings')
+      .get('http://localhost:8080/api/v1/demo')
       .then((response) => setGreeting(response.data))
       .catch((error) => console.log(error));
   }, []);
