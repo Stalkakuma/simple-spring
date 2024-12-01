@@ -2,6 +2,7 @@ package lt.vidunas.simple_spring.config;
 
 import lombok.RequiredArgsConstructor;
 import lt.vidunas.simple_spring.security.TokenAuthenticationFilter;
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
@@ -11,6 +12,7 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -35,8 +37,10 @@ public class SimpleSecurityConfig {
     public SecurityFilterChain simpleSecurityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
-                        .requestMatchers("/goodbye", "*/*/users/**").hasAnyAuthority(ADMIN, USER)
-                        .requestMatchers("/greetings", "/error", "/auth/**").permitAll())
+                        .requestMatchers("/goodbye", "*/*/users/**", "*/*/posts/**").hasAnyAuthority(ADMIN, USER)
+                        .requestMatchers("/", "/greetings", "/error", "/auth/**", "/h2-console" ).permitAll()
+                        .requestMatchers(PathRequest.toH2Console()).permitAll())
+                .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin))
                 .addFilterBefore(tokenAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .exceptionHandling(exceptionHandling -> exceptionHandling.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
                 .sessionManagement(sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

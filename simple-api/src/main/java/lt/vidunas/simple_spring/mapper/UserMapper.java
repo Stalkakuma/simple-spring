@@ -12,6 +12,6 @@ public class UserMapper {
         if (user == null) {
             return null;
         }
-        return new UserDto(user.getId(), user.getUsername(), user.getEmail(), user.getRole());
+        return new UserDto(user.getId(), user.getUsername(), user.getEmail(), user.getRole(), user.getPosts());
     }
 }
