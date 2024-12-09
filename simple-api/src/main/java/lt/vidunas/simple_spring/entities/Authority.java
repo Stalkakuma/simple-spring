@@ -4,7 +4,7 @@ package lt.vidunas.simple_spring.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
+//Komentaras
 @Entity
 @Getter @Setter
 @Table(name="authorities")
